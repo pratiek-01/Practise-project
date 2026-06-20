@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+        body{
+                background-color: #f8f9fa;
+                font-family: sans-serif;
+        }
+        .big{
+                width: 100%;
+                height: 200px;
+                background-color: beige;
+                display: flex;
+                
+        }
+        .expert{
+                width: 250px;
+                height: 150px;
+                margin-left: 20px;
+                margin-top: 20px;
+                padding-left: 10px;
+                border: 2px solid lightgray;
+        }
+        .serv{
+                width: 250px;
+                height: 120px;
+                margin-left: 20px;
+                margin-top: 20px;
+                border: 2px solid black;   
+        }
+        .search{
+                margin-bottom: 10px;
+        }
+         .pagination {
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            text-decoration: none;
+            color: #333;
+            border-radius: 4px;
+        }
+
+        .pagination a.active {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #f0f0f0;
+        }
+</style>
+<body>
+        {% for i in aboutData %}
+        <h2>{{i.ab_title}}</h2>
+        <p>{{i.ab_data}}</p>
+        {% endfor %}
+<h2>Some features that made us unique</h2>
+<div class="search"><form>
+                <input type="text",placeholder="Search" class="search-box" name="ser_title">
+                <button type="submit" class="btn-search">Search</button>
+        </form>
+        </div>
+<div class="big">
+        {% for n in serviceData %}
+        <div class="expert">
+                <h3>{{n.ser_title}}</h3>
+                <p>{{n.ser_data}}</p>
+        </div>
+        {% comment %} <div class="serv">
+                <h3>Professional Service</h3>
+                <p>Usage of the internet is becoming more common due to rapid advancement of technology and power</p>
+        </div> {% endcomment %}
+{% endfor %}
+</div>
+<div class="pagination">
+        {% if serviceData.has_previous %}
+            <a href="/about-us/?page={{serviceData.previous_page_number}}">&laquo; Prev</a>
+        {% endif %}
+    <a href="/about-us/?page=1" >1</a>
+    <a href="#">2</a>
+        {% if serviceData.has_next %}
+            <a href="/about-us/?page={{serviceData.next_page_number}}">Next &raquo;</a>
+        {% endif %}
+</div>
+
+</body>
+{% endblock %}
+</html>

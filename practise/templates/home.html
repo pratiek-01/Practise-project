@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<head>
+    <title>home</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<style>
+    body{
+        font-family: sans-serif;
+    }
+</style>
+<body>
+    <p>{{p|safe}}</p>
+    {% for i in student %}
+    <h3>{{i}}</h3>
+    {% endfor %}
+</body>
+{% endblock %}
+</html>

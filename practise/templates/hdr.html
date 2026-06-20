@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+    <title>home</title>
+    <link rel="stylesheet" href="{% static 'hdr.css' %}">
+    <div class="hdr">
+        <div class="front">
+            This is my first Django website
+        </div>
+        <div class="abt">
+            <a class="{% if request.path == '/about-us/' %} active {% endif %}" href="{% url 'about' %}"> About us </a>
+        </div>
+        <div class="form">
+            <a class="{% if request.path == '/user-form/' %} active {% endif %}" href="{% url 'userform' %}"> User form </a>
+        </div>
+        <div class="sgnt">
+            <a class="{% if request.path == '/signup/' %} active {% endif %}" href="{% url 'signup' %}"> Sign-Up </a>
+        </div>
+        <div class="lgn">
+            <a class="{% if request.path == '/login/' %} active {% endif %}" href="{% url 'login' %}"> Login </a>
+        </div>
+        <div class="lgt">
+            <a class="{% if request.path == '/logout/' %} active {% endif %}" href="{% url 'logout' %}"> Logout </a>
+        </div>
+    </div>
+</head>
+<body>
+</body>
+</html>
